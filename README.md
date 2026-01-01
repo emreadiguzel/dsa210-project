@@ -1,42 +1,44 @@
-# Housing Prices and Air Quality (DSA210 Project Proposal)
+#Housing Prices & Air Quality Analysis
 
-## 1. Project Title
-Exploring the Relationship Between Housing Market Indicators and Air Quality
+**DSA210 Term Project**
 
-## 2. Motivation
-Housing prices and air quality are two important indicators of quality of life.  
-In this project, I aim to explore whether countries with cleaner air also tend to have stronger housing markets.  
-By combining housing market data with global air quality measurements, I hope to identify simple patterns or differences between cleaner-air and more-polluted countries.
+## What's this about?
 
-## 3. Datasets
-- **Dataset 1:** *Global Housing Market Analysis 2015–2024*  
-  https://www.kaggle.com/datasets/atharvasoundankar/global-housing-market-analysis-2015-2024  
-  (Contains house price index, rent index, mortgage rates, inflation, GDP growth, etc.)
+I was curious: do people pay more to live in areas with cleaner air? This project explores whether there's a connection between housing prices and air quality across different countries.
 
-- **Dataset 2:** *World Air Quality Data 2024*  
-  https://www.kaggle.com/datasets/kanchana1990/world-air-quality-data-2024-updated  
-  (Contains air quality measurements for countries and cities in 2024.)
+## The idea
 
-## 4. Data Collection
-Both datasets will be downloaded as CSV files from Kaggle.  
-For the analysis, I will:
-- Select only the **2024** entries from the housing dataset.
-- Clean the air quality dataset (dropping missing or irrelevant rows).
-- Rename and align columns where necessary.
-- Merge the two datasets using the **Country** column.
+It makes sense that people might prefer living in places with better air quality - and be willing to pay for it. So I wanted to find out if the data actually supports this.
 
-## 5. Planned Analysis
-I plan to perform the following steps:
-- Basic data cleaning and preparation.
-- Exploratory Data Analysis (EDA) with summary statistics.
-- Visualizations such as scatter plots and bar charts.
-- Divide countries into groups (clean-air vs polluted) based on median AQI.
-- Perform a **simple hypothesis test (independent samples t-test)** to check if the average housing price index differs between the two groups.
+## Datasets I used
 
-## 6. Expected Outcome
-I expect to observe whether air quality has any meaningful relationship with housing market indicators.  
-The results may show:
-- If cleaner-air countries have higher housing price index values,
-- Or if there is no significant difference between clean and polluted countries.
+1. **Housing data** - Global Housing Market Analysis (2015-2024)  
+   [Kaggle link](https://www.kaggle.com/datasets/atharvasoundankar/global-housing-market-analysis-2015-2024)  
+   Has stuff like house price index, rent index, mortgage rates, etc.
 
-Overall, the project aims to provide a simple and clear comparison using real-world data.
+2. **Air quality data** - World Air Quality Data 2024  
+   [Kaggle link](https://www.kaggle.com/datasets/kanchana1990/world-air-quality-data-2024-updated)  
+   Air quality measurements for countries around the world.
+
+## What I did
+
+1. **Loaded & merged** the two datasets (matched by country name)
+2. **Explored the data** - basic stats, scatter plots, bar charts
+3. **Ran a t-test & p-test** to check if the difference is statistically significant
+4. **Trained ML models** - Logistic Regression, Decision Tree, Random Forest, XGBoost
+5. **Analyzed feature importance** to see what matters most
+6. **Removed low-importance features** and compared results
+
+## What I found
+
+**Yes, there IS a significant difference!** (p-value way below 0.05)
+
+The main findings:
+- **Population Growth** is the biggest predictor - areas with different growth patterns have different air quality
+- **Rent Index** and **Affordability Ratio** also matter
+- Tree-based models (Random Forest, XGBoost) worked best
+- Some features like GDP Growth and Inflation Rate didn't help much
+
+## Conclusion
+
+Housing markets do seem to reflect air quality to some extent. Population growth turned out to be the key factor linking the two. This could be useful for urban planners or anyone interested in how environmental factors affect real estate.
